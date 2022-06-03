@@ -5,6 +5,8 @@
  */
 package serliogiron_lab7p2;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author usuario
@@ -27,30 +29,54 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Artist = new javax.swing.JFrame();
+        User = new javax.swing.JFrame();
         contra_field = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         usuario_field = new javax.swing.JTextField();
         LOGIN = new javax.swing.JButton();
-        ARTIST = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        tabbedpanel = new javax.swing.JTabbedPane();
+        user = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        register_user = new javax.swing.JButton();
         user_register_password = new javax.swing.JPasswordField();
         user_register_username = new javax.swing.JTextField();
         user_register_age = new javax.swing.JFormattedTextField();
-        jPanel2 = new javax.swing.JPanel();
+        artist = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         artist_register_username1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         artist_register_password1 = new javax.swing.JPasswordField();
         jLabel8 = new javax.swing.JLabel();
         artist_register_age1 = new javax.swing.JFormattedTextField();
-        jButton2 = new javax.swing.JButton();
+        artist_register = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        artist_artisticname_field = new javax.swing.JTextField();
+
+        javax.swing.GroupLayout ArtistLayout = new javax.swing.GroupLayout(Artist.getContentPane());
+        Artist.getContentPane().setLayout(ArtistLayout);
+        ArtistLayout.setHorizontalGroup(
+            ArtistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 782, Short.MAX_VALUE)
+        );
+        ArtistLayout.setVerticalGroup(
+            ArtistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 530, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout UserLayout = new javax.swing.GroupLayout(User.getContentPane());
+        User.getContentPane().setLayout(UserLayout);
+        UserLayout.setHorizontalGroup(
+            UserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 795, Short.MAX_VALUE)
+        );
+        UserLayout.setVerticalGroup(
+            UserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 565, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -63,9 +89,9 @@ public class Main extends javax.swing.JFrame {
         LOGIN.setBackground(new java.awt.Color(0, 0, 255));
         LOGIN.setText("LOG IN");
 
-        ARTIST.setBackground(new java.awt.Color(0, 0, 0));
+        tabbedpanel.setBackground(new java.awt.Color(0, 0, 0));
 
-        jPanel1.setBackground(new java.awt.Color(51, 255, 51));
+        user.setBackground(new java.awt.Color(51, 255, 51));
 
         jLabel3.setText("USERNAME");
 
@@ -73,7 +99,12 @@ public class Main extends javax.swing.JFrame {
 
         jLabel5.setText("AGE");
 
-        jButton1.setText("Register");
+        register_user.setText("Register");
+        register_user.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                register_userMouseClicked(evt);
+            }
+        });
 
         user_register_username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,48 +114,48 @@ public class Main extends javax.swing.JFrame {
 
         user_register_age.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout userLayout = new javax.swing.GroupLayout(user);
+        user.setLayout(userLayout);
+        userLayout.setHorizontalGroup(
+            userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(user_register_password)
-                    .addComponent(jButton1)
+                    .addComponent(register_user)
                     .addComponent(user_register_username)
                     .addComponent(user_register_age, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(104, 104, 104))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        userLayout.setVerticalGroup(
+            userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userLayout.createSequentialGroup()
                 .addGap(98, 98, 98)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(user_register_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(user_register_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(100, 100, 100)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(user_register_age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(80, 80, 80)
-                .addComponent(jButton1)
+                .addComponent(register_user)
                 .addGap(74, 74, 74))
         );
 
-        ARTIST.addTab("USER", jPanel1);
+        tabbedpanel.addTab("USER", user);
 
-        jPanel2.setBackground(new java.awt.Color(51, 255, 51));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        artist.setBackground(new java.awt.Color(51, 255, 51));
+        artist.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel6.setText("USERNAME");
 
@@ -140,61 +171,66 @@ public class Main extends javax.swing.JFrame {
 
         artist_register_age1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
-        jButton2.setText("Register");
-
-        jLabel9.setText("ARTISTIC NAME");
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        artist_register.setText("Register");
+        artist_register.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                artist_registerMouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jLabel9.setText("ARTISTIC NAME");
+
+        artist_artisticname_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                artist_artisticname_fieldActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout artistLayout = new javax.swing.GroupLayout(artist);
+        artist.setLayout(artistLayout);
+        artistLayout.setHorizontalGroup(
+            artistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(artistLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(artistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel9)
                     .addComponent(jLabel8)
                     .addComponent(jLabel7)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(artistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(artist_register_password1)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(artist_register, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(artist_register_username1)
                     .addComponent(artist_register_age1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1))
+                    .addComponent(artist_artisticname_field))
                 .addGap(104, 104, 104))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        artistLayout.setVerticalGroup(
+            artistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(artistLayout.createSequentialGroup()
                 .addGap(98, 98, 98)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(artistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(artist_register_username1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(75, 75, 75)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(artistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(artist_register_password1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(59, 59, 59)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(artistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(artist_register_age1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(artistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(artist_artisticname_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(artist_register)
                 .addGap(74, 74, 74))
         );
 
-        ARTIST.addTab("ARTIST", jPanel2);
+        tabbedpanel.addTab("ARTIST", artist);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -202,7 +238,7 @@ public class Main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ARTIST, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabbedpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(125, 125, 125)
@@ -214,9 +250,11 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(contra_field, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(61, 61, 61))
+                            .addComponent(contra_field, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(LOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(730, 730, 730))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,10 +267,10 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(contra_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(31, 31, 31)
+                .addGap(26, 26, 26)
                 .addComponent(LOGIN)
-                .addGap(251, 251, 251))
-            .addComponent(ARTIST)
+                .addGap(256, 256, 256))
+            .addComponent(tabbedpanel)
         );
 
         pack();
@@ -246,9 +284,65 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_artist_register_username1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void artist_artisticname_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artist_artisticname_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_artist_artisticname_fieldActionPerformed
+
+    private void register_userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_register_userMouseClicked
+        String username;
+        String password;
+        int age;
+        
+        username = user_register_username.getText();
+        password = user_register_password.getText();
+        age = Integer.parseInt(user_register_age.getText());
+        
+        user_register_username.setText("");
+        user_register_password.setText("");
+        user_register_age.setText("");
+        
+        UserNormal usuario = new UserNormal();
+        
+        usuario.setEdad(age);
+        usuario.setPassword(password);
+        usuario.setUsername(username);
+        
+        cuentas.add(usuario);
+        
+        usuarioMain = usuario;
+        
+        User.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_register_userMouseClicked
+
+    private void artist_registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_artist_registerMouseClicked
+        String username;
+        String password;
+        int age;
+        String nombreart;
+        
+        username = artist_register_username1.getText();
+        password = artist_register_password1.getText();
+        age = Integer.parseInt(artist_register_age1.getText());
+        nombreart = artist_artisticname_field.getText();
+        
+        user_register_username.setText("");
+        user_register_password.setText("");
+        user_register_age.setText("");
+        artist_artisticname_field.setText("");
+        
+        Artista usuario = new Artista();
+        
+        usuario.setEdad(age);
+        usuario.setPassword(password);
+        usuario.setUsername(username);
+        usuario.setNombre_art(nombreart);
+        
+        cuentas.add(usuario);
+        
+        usuarioMain = usuario;
+        
+        Artist.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_artist_registerMouseClicked
 
     /**
      * @param args the command line arguments
@@ -284,16 +378,22 @@ public class Main extends javax.swing.JFrame {
             }
         });
     }
+    
+    //variables mias
+    Usuario usuarioMain;
+    ArrayList <Usuario> cuentas = new ArrayList();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane ARTIST;
+    private javax.swing.JFrame Artist;
     private javax.swing.JButton LOGIN;
+    private javax.swing.JFrame User;
+    private javax.swing.JPanel artist;
+    private javax.swing.JTextField artist_artisticname_field;
+    private javax.swing.JButton artist_register;
     private javax.swing.JFormattedTextField artist_register_age1;
     private javax.swing.JPasswordField artist_register_password1;
     private javax.swing.JTextField artist_register_username1;
     private javax.swing.JPasswordField contra_field;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -303,9 +403,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton register_user;
+    private javax.swing.JTabbedPane tabbedpanel;
+    private javax.swing.JPanel user;
     private javax.swing.JFormattedTextField user_register_age;
     private javax.swing.JPasswordField user_register_password;
     private javax.swing.JTextField user_register_username;
