@@ -13,17 +13,19 @@ import java.util.ArrayList;
  */
 public class Artista extends Usuario{
     String nombre_art;
-    ArrayList <Cancion> canciones = new ArrayList();
-    ArrayList <Album> albumes = new ArrayList();
+    ArrayList <Cancion> canciones;
+    ArrayList <Album> albumes;
 
     public Artista() {
         super();
+        canciones = new ArrayList();
+        albumes = new ArrayList();
     }
     
     
 
     public Artista(String nombre_art) {
-        this.nombre_art = nombre_art;
+        this.nombre_art = nombre_art; 
     }
     
     

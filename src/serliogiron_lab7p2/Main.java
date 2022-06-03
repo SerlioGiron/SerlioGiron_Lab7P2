@@ -7,6 +7,8 @@ package serliogiron_lab7p2;
 
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -49,6 +51,8 @@ public class Main extends javax.swing.JFrame {
         duracion = new javax.swing.JTextField();
         Agregar_cancion = new javax.swing.JButton();
         Publicar_album = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTree_album_artista = new javax.swing.JTree();
         User = new javax.swing.JFrame();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         contra_field = new javax.swing.JPasswordField();
@@ -241,17 +245,25 @@ public class Main extends javax.swing.JFrame {
 
         TabbedPane.addTab("Album", Album);
 
+        jScrollPane1.setViewportView(jTree_album_artista);
+
         javax.swing.GroupLayout ArtistLayout = new javax.swing.GroupLayout(Artist.getContentPane());
         Artist.getContentPane().setLayout(ArtistLayout);
         ArtistLayout.setHorizontalGroup(
             ArtistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ArtistLayout.createSequentialGroup()
                 .addComponent(TabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 537, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 63, Short.MAX_VALUE))
         );
         ArtistLayout.setVerticalGroup(
             ArtistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(TabbedPane)
+            .addGroup(ArtistLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout UserLayout = new javax.swing.GroupLayout(User.getContentPane());
@@ -277,6 +289,11 @@ public class Main extends javax.swing.JFrame {
 
         LOGIN.setBackground(new java.awt.Color(0, 0, 255));
         LOGIN.setText("LOG IN");
+        LOGIN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LOGINMouseClicked(evt);
+            }
+        });
 
         tabbedpanel.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -426,16 +443,15 @@ public class Main extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(tabbedpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
+                        .addGap(135, 135, 135)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(usuario_field, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
+                        .addGap(115, 115, 115)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -443,7 +459,7 @@ public class Main extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addComponent(LOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(730, 730, 730))
+                .addGap(67, 67, 67))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -566,9 +582,15 @@ public class Main extends javax.swing.JFrame {
         nombre_cancion.setText("");
         duracion.setText("");
     }//GEN-LAST:event_Agregar_cancionMouseClicked
+    
     ArrayList <Cancion> canciones = new ArrayList();
     ArrayList <Album> albumes = new ArrayList();
+    
     private void Publicar_albumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Publicar_albumMouseClicked
+        for (int i = 0; i < canciones.size(); i++) {
+            System.out.println(canciones.get(i));
+        }
+        
         Album album = new Album();
         
         String titulo;
@@ -591,7 +613,10 @@ public class Main extends javax.swing.JFrame {
         album.setCanciones(canciones);
         album.setCanciones_cant(canciones.size());
         
-        ((Artista) usuarioMain).getCanciones().addAll(canciones);
+        System.out.println(album);
+        
+        ((Artista) usuarioMain).setCanciones(canciones);
+        //System.out.println("ola");
         ((Artista) usuarioMain).getAlbumes().add(album);
         
         canciones.clear();
@@ -599,7 +624,29 @@ public class Main extends javax.swing.JFrame {
         nombre_cancion.setText("");
         duracion.setText("");
         TITLE.setText("");
+        
+        //System.out.println("llega hasta aqui");
+        
+        jTree_album_artista.removeAll();
+        
+        DefaultTreeModel modelo;
+        modelo = (DefaultTreeModel) jTree_album_artista.getModel();
+        
+        DefaultMutableTreeNode raiz; 
+        raiz = (DefaultMutableTreeNode) modelo.getRoot();
+        
+        DefaultMutableTreeNode nodo_album; 
+        nodo_album = new DefaultMutableTreeNode(album);
+        
+        //nodo_album.add(anio);
+        raiz.add(nodo_album);
+        modelo.reload();
     }//GEN-LAST:event_Publicar_albumMouseClicked
+
+    private void LOGINMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LOGINMouseClicked
+        Artist.pack();
+        Artist.setVisible(true);
+    }//GEN-LAST:event_LOGINMouseClicked
 
     /**
      * @param args the command line arguments
@@ -675,9 +722,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTree jTree_album_artista;
     private javax.swing.JTextField nombre_cancion;
     private javax.swing.JButton register_user;
     private javax.swing.JTabbedPane tabbedpanel;
