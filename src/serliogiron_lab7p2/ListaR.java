@@ -13,6 +13,47 @@ import java.util.ArrayList;
  */
 public class ListaR {
     String nombre;
-    int likes;
+    int likes = 0;
     ArrayList <Cancion> canciones = new ArrayList();
+
+    
+    
+    public ListaR(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
+
+    @Override
+    public String toString() {
+        return "ListaR{" + nombre + " likes " + likes + '}';
+    }
+    
+    
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public ArrayList<Cancion> getCanciones() {
+        return canciones;
+    }
+
+    public void setCanciones(ArrayList<Cancion> canciones) {
+        this.canciones = canciones;
+    }
+    
+    
 }
