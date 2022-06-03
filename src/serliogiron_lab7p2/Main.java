@@ -553,8 +553,21 @@ public class Main extends javax.swing.JFrame {
 
     private void Agregar_cancionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Agregar_cancionMouseClicked
         
+        Cancion cancion = new Cancion();
+        
+        String titulo = nombre_cancion.getText();
+        double dura = Double.parseDouble(duracion.getText());
+        
+        cancion.setTitulo(titulo);
+        cancion.setDuracion(dura);
+        
+        canciones.add(cancion);
+        
+        nombre_cancion.setText("");
+        duracion.setText("");
     }//GEN-LAST:event_Agregar_cancionMouseClicked
     ArrayList <Cancion> canciones = new ArrayList();
+    ArrayList <Album> albumes = new ArrayList();
     private void Publicar_albumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Publicar_albumMouseClicked
         Album album = new Album();
         
@@ -569,10 +582,23 @@ public class Main extends javax.swing.JFrame {
         album.setTitulo(titulo);
         album.setFecha(fecha);
         album.setLikes(likes);
+        
+        for (int i = 0; i < canciones.size(); i++) 
+        {
+            canciones.get(i).setAlbum(album);
+        }
+        
         album.setCanciones(canciones);
         album.setCanciones_cant(canciones.size());
         
+        ((Artista) usuarioMain).getCanciones().addAll(canciones);
+        ((Artista) usuarioMain).getAlbumes().add(album);
+        
         canciones.clear();
+        
+        nombre_cancion.setText("");
+        duracion.setText("");
+        TITLE.setText("");
     }//GEN-LAST:event_Publicar_albumMouseClicked
 
     /**
