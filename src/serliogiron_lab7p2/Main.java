@@ -35,13 +35,13 @@ public class Main extends javax.swing.JFrame {
         Artist = new javax.swing.JFrame();
         TabbedPane = new javax.swing.JTabbedPane();
         Single = new javax.swing.JPanel();
-        jTextField4 = new javax.swing.JTextField();
+        field_title_single = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        field_nombre_cancion_single = new javax.swing.JTextField();
+        field_duracion_single = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        Lanzar_single = new javax.swing.JButton();
         Album = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         TITLE = new javax.swing.JTextField();
@@ -84,15 +84,15 @@ public class Main extends javax.swing.JFrame {
 
         jLabel13.setText("TITLE");
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        field_nombre_cancion_single.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                field_nombre_cancion_singleActionPerformed(evt);
             }
         });
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        field_duracion_single.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                field_duracion_singleActionPerformed(evt);
             }
         });
 
@@ -100,7 +100,12 @@ public class Main extends javax.swing.JFrame {
 
         jLabel15.setText("Nombre de cancion");
 
-        jButton3.setText("Lanzar Single");
+        Lanzar_single.setText("Lanzar Single");
+        Lanzar_single.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Lanzar_singleMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout SingleLayout = new javax.swing.GroupLayout(Single);
         Single.setLayout(SingleLayout);
@@ -111,24 +116,24 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(SingleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(SingleLayout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addComponent(jButton3)
+                        .addComponent(Lanzar_single)
                         .addGap(80, 80, 80))
                     .addGroup(SingleLayout.createSequentialGroup()
                         .addGroup(SingleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(SingleLayout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addGap(67, 67, 67)
-                                .addComponent(jTextField6))
+                                .addComponent(field_duracion_single))
                             .addGroup(SingleLayout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField5)))
+                                .addComponent(field_nombre_cancion_single)))
                         .addContainerGap())))
             .addGroup(SingleLayout.createSequentialGroup()
                 .addGroup(SingleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(SingleLayout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(field_title_single, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(SingleLayout.createSequentialGroup()
                         .addGap(105, 105, 105)
                         .addComponent(jLabel13)))
@@ -140,17 +145,17 @@ public class Main extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(field_title_single, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(SingleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(field_nombre_cancion_single, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(SingleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(field_duracion_single, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(Lanzar_single)
                 .addContainerGap(290, Short.MAX_VALUE))
         );
 
@@ -245,6 +250,12 @@ public class Main extends javax.swing.JFrame {
 
         TabbedPane.addTab("Album", Album);
 
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Lanzamiento");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Single");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Albumes");
+        treeNode1.add(treeNode2);
+        jTree_album_artista.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane1.setViewportView(jTree_album_artista);
 
         javax.swing.GroupLayout ArtistLayout = new javax.swing.GroupLayout(Artist.getContentPane());
@@ -253,17 +264,17 @@ public class Main extends javax.swing.JFrame {
             ArtistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ArtistLayout.createSequentialGroup()
                 .addComponent(TabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(49, 49, 49)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 63, Short.MAX_VALUE))
+                .addGap(0, 59, Short.MAX_VALUE))
         );
         ArtistLayout.setVerticalGroup(
             ArtistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(TabbedPane)
-            .addGroup(ArtistLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ArtistLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout UserLayout = new javax.swing.GroupLayout(User.getContentPane());
@@ -559,13 +570,13 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_duracionActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void field_nombre_cancion_singleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_nombre_cancion_singleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_field_nombre_cancion_singleActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void field_duracion_singleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_duracion_singleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_field_duracion_singleActionPerformed
 
     private void Agregar_cancionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Agregar_cancionMouseClicked
         
@@ -587,9 +598,9 @@ public class Main extends javax.swing.JFrame {
     ArrayList <Album> albumes = new ArrayList();
     
     private void Publicar_albumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Publicar_albumMouseClicked
-        for (int i = 0; i < canciones.size(); i++) {
-            System.out.println(canciones.get(i));
-        }
+        /*for (int i = 0; i < canciones.size(); i++) {
+        System.out.println(canciones.get(i));
+        }*/
         
         Album album = new Album();
         
@@ -613,13 +624,13 @@ public class Main extends javax.swing.JFrame {
         album.setCanciones(canciones);
         album.setCanciones_cant(canciones.size());
         
-        System.out.println(album);
+        //System.out.println(album);
         
         ((Artista) usuarioMain).setCanciones(canciones);
         //System.out.println("ola");
         ((Artista) usuarioMain).getAlbumes().add(album);
         
-        canciones.clear();
+        //canciones.clear();
         
         nombre_cancion.setText("");
         duracion.setText("");
@@ -627,26 +638,51 @@ public class Main extends javax.swing.JFrame {
         
         //System.out.println("llega hasta aqui");
         
-        jTree_album_artista.removeAll();
-        
         DefaultTreeModel modelo;
         modelo = (DefaultTreeModel) jTree_album_artista.getModel();
         
         DefaultMutableTreeNode raiz; 
-        raiz = (DefaultMutableTreeNode) modelo.getRoot();
+        raiz = (DefaultMutableTreeNode) modelo.getChild(modelo.getRoot(), 1);
         
         DefaultMutableTreeNode nodo_album; 
         nodo_album = new DefaultMutableTreeNode(album);
         
-        //nodo_album.add(anio);
+        DefaultMutableTreeNode cancion; 
+        System.out.println("Size> "+album.getCanciones().size());
+        for (int i = 0; i < album.getCanciones().size(); i++) 
+        {
+            //System.out.println("HOLAAAA> "+album.getCanciones().get(i).toString());
+            cancion = new DefaultMutableTreeNode(album.getCanciones().get(i));
+            nodo_album.add(cancion);
+        }
+        
         raiz.add(nodo_album);
         modelo.reload();
+        canciones.clear();
     }//GEN-LAST:event_Publicar_albumMouseClicked
 
     private void LOGINMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LOGINMouseClicked
         Artist.pack();
         Artist.setVisible(true);
     }//GEN-LAST:event_LOGINMouseClicked
+
+    private void Lanzar_singleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Lanzar_singleMouseClicked
+        Single single = new Single();
+        
+        String titulo = field_title_single.getText();
+        single.setTitulo(titulo);
+        
+        Cancion cancion = new Cancion();
+        
+        String nombre = field_nombre_cancion_single.getText();
+        double duracion = Double.parseDouble(field_duracion_single.getText());
+        
+        cancion.setAlbum(single);
+        cancion.setDuracion(duracion);
+        cancion.setTitulo(nombre);
+        
+        
+    }//GEN-LAST:event_Lanzar_singleMouseClicked
 
     /**
      * @param args the command line arguments
@@ -692,6 +728,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel Album;
     private javax.swing.JFrame Artist;
     private javax.swing.JButton LOGIN;
+    private javax.swing.JButton Lanzar_single;
     private javax.swing.JButton Publicar_album;
     private javax.swing.JPanel Single;
     private javax.swing.JTextField TITLE;
@@ -705,7 +742,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField artist_register_username1;
     private javax.swing.JPasswordField contra_field;
     private javax.swing.JTextField duracion;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JTextField field_duracion_single;
+    private javax.swing.JTextField field_nombre_cancion_single;
+    private javax.swing.JTextField field_title_single;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -723,9 +762,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTree jTree_album_artista;
     private javax.swing.JTextField nombre_cancion;
     private javax.swing.JButton register_user;

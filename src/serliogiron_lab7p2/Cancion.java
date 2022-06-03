@@ -12,14 +12,14 @@ package serliogiron_lab7p2;
 public class Cancion {
     String titulo;
     double duracion;
-    Album album;
+    Lanzamiento album;
 
     public Cancion() {
     }
     
     
 
-    public Cancion(String titulo, double duracion, Album album) {
+    public Cancion(String titulo, double duracion, Lanzamiento album) {
         this.titulo = titulo;
         this.duracion = duracion;
         this.album = album;
@@ -50,11 +50,11 @@ public class Cancion {
         this.duracion = duracion;
     }
 
-    public Album getAlbum() {
+    public Lanzamiento getAlbum() {
         return album;
     }
 
-    public void setAlbum(Album album) {
+    public void setAlbum(Lanzamiento album) {
         this.album = album;
     }
     
