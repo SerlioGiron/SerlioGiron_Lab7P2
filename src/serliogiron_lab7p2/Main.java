@@ -681,7 +681,21 @@ public class Main extends javax.swing.JFrame {
         cancion.setDuracion(duracion);
         cancion.setTitulo(nombre);
         
+        single.setCancion(cancion);
         
+        //System.out.println(cancion);
+        
+        DefaultTreeModel modelo;
+        modelo = (DefaultTreeModel) jTree_album_artista.getModel();
+        
+        DefaultMutableTreeNode raiz; 
+        raiz = (DefaultMutableTreeNode) modelo.getChild(modelo.getRoot(), 0);
+        
+        DefaultMutableTreeNode nodo_single; 
+        nodo_single = new DefaultMutableTreeNode(single);
+        
+        raiz.add(nodo_single);
+        modelo.reload();
     }//GEN-LAST:event_Lanzar_singleMouseClicked
 
     /**
