@@ -16,6 +16,10 @@ public class ListaR {
     int likes = 0;
     ArrayList <Cancion> canciones = new ArrayList();
 
+    public ListaR() {
+    }
+
+    
     
     
     public ListaR(String nombre) {

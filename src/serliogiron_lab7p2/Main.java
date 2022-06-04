@@ -61,8 +61,10 @@ public class Main extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         field_nombre_listas = new javax.swing.JTextField();
+        crear_listaR = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        jTree_listas = new javax.swing.JTree();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         contra_field = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
@@ -298,6 +300,15 @@ public class Main extends javax.swing.JFrame {
 
         jLabel17.setText("Nombre");
 
+        crear_listaR.setText("Crear lista de reproduccion");
+        crear_listaR.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                crear_listaRMouseClicked(evt);
+            }
+        });
+
+        jLabel18.setText("Seleccione las canciones que desea agregar a la lista de reproducciones");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -307,9 +318,14 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jLabel17)
                 .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(crear_listaR)
                     .addComponent(jLabel16)
                     .addComponent(field_nombre_listas, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(jLabel18)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,10 +336,16 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(field_nombre_listas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addComponent(crear_listaR)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel18)
+                .addGap(226, 226, 226))
         );
 
-        jScrollPane3.setViewportView(jTree1);
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Listas de Reproduccion");
+        jTree_listas.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane3.setViewportView(jTree_listas);
 
         javax.swing.GroupLayout UserLayout = new javax.swing.GroupLayout(User.getContentPane());
         User.getContentPane().setLayout(UserLayout);
@@ -780,6 +802,39 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Lanzar_singleActionPerformed
 
+    private void crear_listaRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_listaRMouseClicked
+        
+        String nombre = field_nombre_listas.getText();
+        
+        ListaR lista = new ListaR(nombre);
+        
+        ArrayList ListCanciones = new ArrayList();
+        
+        ListCanciones = (ArrayList)jList_user_canciones.getSelectedValuesList();
+        lista.setCanciones(ListCanciones);
+        //System.out.println(lista.getCanciones());
+        
+        field_nombre_listas.setText("");
+        
+        //-----------------------------------------------------------------------
+        DefaultTreeModel modelo;
+        modelo = (DefaultTreeModel) jTree_listas.getModel();
+        
+        DefaultMutableTreeNode raiz; 
+        raiz = (DefaultMutableTreeNode) modelo.getRoot();
+        
+        //DefaultMutableTreeNode listas; 
+        //listas = (DefaultMutableTreeNode) modelo.getRoot();
+        
+        DefaultMutableTreeNode nodo_list;
+        
+        for (int i = 0; i < lista.getCanciones().size(); i++) {
+            nodo_list = new DefaultMutableTreeNode(lista.getCanciones().get(i));
+            raiz.add(nodo_list);
+        }
+        modelo.reload();
+    }//GEN-LAST:event_crear_listaRMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -837,6 +892,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPasswordField artist_register_password1;
     private javax.swing.JTextField artist_register_username1;
     private javax.swing.JPasswordField contra_field;
+    private javax.swing.JButton crear_listaR;
     private javax.swing.JTextField duracion;
     private javax.swing.JTextField field_duracion_single;
     private javax.swing.JTextField field_nombre_cancion_single;
@@ -851,6 +907,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -865,8 +922,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTree jTree1;
     private javax.swing.JTree jTree_album_artista;
+    private javax.swing.JTree jTree_listas;
     private javax.swing.JTextField nombre_cancion;
     private javax.swing.JButton register_user;
     private javax.swing.JTabbedPane tabbedpanel;
