@@ -296,6 +296,8 @@ public class Main extends javax.swing.JFrame {
         jList_user_canciones.setModel(new DefaultListModel());
         jScrollPane2.setViewportView(jList_user_canciones);
 
+        jPanel1.setBackground(new java.awt.Color(102, 255, 102));
+
         jLabel16.setText("Lista de Reproduccion");
 
         jLabel17.setText("Nombre");
